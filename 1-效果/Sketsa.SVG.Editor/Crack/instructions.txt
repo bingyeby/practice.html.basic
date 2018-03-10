@@ -1,0 +1,4 @@
+- install application
+- replace the kiyut-sketsa.jar file installed under Program Files\Sketsa-7_0_1\sketsa\modules with the provided cracked file 
+- run the application and register with any name and serial
+if you have already ran the application before replacing the file and crack didn't succeed: close application, delete %appdata%\.sketsa\7.0.1\var\cache and run again

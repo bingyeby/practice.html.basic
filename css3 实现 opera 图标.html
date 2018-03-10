@@ -1,0 +1,150 @@
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="description" content="CSS3实现Opera浏览器logo >> 张鑫旭-鑫空间-鑫生活">
+    <meta name="description" content="张鑫旭web前端学习实例页面">
+    <meta name="keywords" content="张鑫旭,张鑫旭-鑫空间-鑫生活,web前端,css,jQuery,javascript,demo页面">
+    <meta name="author" content="张鑫旭,zhangxixnu">
+    <title>CSS3实现Opera浏览器logo &gt;&gt; 张鑫旭-鑫空间-鑫生活</title>
+    <link rel="stylesheet" href="../css/demo.css" type="text/css">
+    <link rel="stylesheet" href="../css/hl.css" type="text/css">
+    <style type="text/css">
+        #opera-logo {
+            height: 512px;
+            width: 512px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #opera-logo div { position: absolute; }
+
+        #opera-logo .outer-edge {
+            width: 440px;
+            height: 470px;
+            background: #800;
+            background: -moz-linear-gradient(-90deg, #F88, #800);
+            background: -webkit-gradient(linear, 0 top, 0 bottom, from(#F88), to(#800));
+            top: 20px;
+            left: 36px;
+            border-radius: 220px;
+            -moz-border-radius: 220px/235px;
+            -webkit-border-radius: 220px 235px;
+            border-radius: 220px/235px;
+        }
+
+        #opera-logo .highlight {
+            width: 436px;
+            height: 466px;
+            background: #d40009;
+            background: -moz-linear-gradient(-90deg, #FCC, #E71616 50%, #d40009);
+            background: -webkit-gradient(linear, 0 top, 0 bottom, from(#FCC), color-stop(50%, #E71616), to(#d40009));
+            top: 22px;
+            left: 38px;
+            -moz-border-radius: 218px/233px;
+            -webkit-border-radius: 218px 233px;
+            border-radius: 218px/233px;
+        }
+
+        #opera-logo .fill {
+            width: 436px;
+            height: 456px;
+            background: #E71616;
+            background: -moz-linear-gradient(-90deg, #FE878A, #E71616 50%, #800000 80%, #800000 85%, #b80304);
+            background: -webkit-gradient(linear, 0 top, 0 bottom, from(#FE878A), to(#b80304), color-stop(50%, #E71616), color-stop(80%, #800000), color-stop(85%, #800000) );
+            top: 30px;
+            left: 38px;
+            -moz-border-radius: 218px/228px;
+            -webkit-border-radius: 218px 228px;
+            border-radius: 218px/228px;
+        }
+
+        #opera-logo .inner-edge {
+            width: 198px;
+            height: 396px;
+            background: #d20000;
+            background: -moz-linear-gradient(-90deg, #cc3836, #d9100f 50%, #d20000);
+            background: -webkit-gradient(linear, 0 top, 0 bottom, from(#cc3836), color-stop(50%, #d9100f), to(#d20000));
+            left: 158px;
+            top: 56px;
+            -moz-border-radius: 99px/170px;
+            -webkit-border-radius: 99px 170px;
+            border-radius: 99px/170px;
+        }
+
+        #opera-logo .inside {
+            width: 192px;
+            height: 390px;
+            background: #b80000;
+            background: -moz-linear-gradient(-90deg, #9a0000, #b80000);
+            background: -webkit-gradient(linear, 0 top, 0 bottom, from(#9a0000), to(#b80000));
+            left: 161px;
+            top: 59px;
+            -moz-border-radius: 96px/170px;
+            -webkit-border-radius: 96px 170px;
+            border-radius: 96px/170px;
+        }
+
+        #opera-logo .counter {
+            width: 164px;
+            height: 368px;
+            background: #FFF;
+            left: 174px;
+            top: 71px;
+            -moz-border-radius: 82px/170px;
+            -webkit-border-radius: 82px 170px;
+            border-radius: 82px/170px;
+        }
+
+
+        #opera-logo .light-shadow {
+            left: 106px;
+            top: 344px;
+            height: 50px;
+            width: 304px;
+            -moz-border-radius: 152px/25px;
+            -webkit-border-radius: 152px 25px;
+            border-radius: 152px/25px;
+            -moz-box-shadow: 0 100px 30px hsla(0,0%,0%,.2);
+            -webkit-box-shadow: 0 100px 30px hsla(0,0%,0%,.2);
+            box-shadow: 0 100px 30px hsla(0,0%,0%,.2);
+        }
+
+        #opera-logo .dark-shadow {
+            left: 146px;
+            top: 325px;
+            height: 70px;
+            width: 220px;
+            -moz-border-radius: 110px/35px;
+            -webkit-border-radius: 110px 35px;
+            border-radius: 110px/35px;
+            -moz-box-shadow: 0 100px 15px hsla(0,0%,0%,.6);
+            -webkit-box-shadow: 0 100px 15px hsla(0,0%,0%,.6);
+            box-shadow: 0 100px 15px hsla(0,0%,0%,.6);
+        }
+
+    </style>
+</head>
+
+<body style="">
+
+<div id="main">
+    <h1>CSS3实现Opera浏览器logo实例页面</h1>
+    <div id="body" class="light">
+        <div id="content" class="show">
+            <h3>展示</h3>
+            <div class="article_new"><a href="http://www.zhangxinxu.com/wordpress/?p=1012">回到相关文章 &gt;&gt;</a></div>
+            <div class="demo">
+                <div id="opera-logo">
+                    <div class="light-shadow"></div>
+                    <div class="dark-shadow"></div>
+                    <div class="outer-edge"></div>
+                    <div class="highlight"></div>
+                    <div class="fill"></div>
+                    <div class="inner-edge"></div>
+                    <div class="inside"></div>
+                    <div class="counter"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

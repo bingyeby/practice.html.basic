@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script src="./js/jquery-1.8.3.js"></script>
+    <script src="./js/velocity.min.js"></script>
+    <script src="./js/velocity.ui.min.js"></script>
+    <title>无标题文档</title>
+</head>
+
+<body>
+
+    <style>
+        .img-test-rotateY {
+            cursor: pointer;
+            /* height: 100px; */
+            width: 200px;
+        }
+    </style>
+    <div>
+        <img class="img-test-rotateY" id="img-test-rotateY-1" src="images/1.jpg" />
+    </div>
+    <script type="text/javascript">
+        /*绑定事件，进入运行程序后去绑定，程序运行结束后继续绑定事件（及时删除计时器）*/
+        var $el = $("#img-test-rotateY-1");
+        // $el.on("hover", function () {
+        //     $el.velocity(
+        //         {
+        //             rotateY: "360deg"
+        //         },
+        //         {
+        //             duration: 2000,
+        //             easing: "linear",
+        //             begin: function () {
+
+        //             },
+        //             complete: function () {
+
+        //             },
+        //             progress: function (elements, complete, remaining, start, tweenValue) {
+        //                 var curValue = 360 * complete;
+        //                 if (curValue > 90) {
+        //                     $el.attr("src", 'images/2.jpg');
+        //                     if (curValue > 270) {
+        //                         $el.attr("src", 'images/1.jpg');
+        //                     }
+        //                 }
+        //             }
+        //         }
+        //     )
+        // })
+
+
+        var seq = [{
+            elements: $el,
+            properties: {
+                rotateY: "180deg"
+            },
+            options: {
+                duration: 2000,
+                easing: "linear",
+                begin: function () {
+                    $el.off("mouseover")
+                },
+                complete: function () { },
+                progress: function (elements, complete, remaining, start, tweenValue) {
+                    var curValue = 180 * complete;
+                    if (curValue > 90 && curValue < 181) {
+                        $el.attr("src", 'images/2.jpg');
+                    }
+                }
+            }
+        }, {
+            elements: $el,
+            properties: {
+                rotateY: "0deg"
+            },
+            options: {
+                duration: 2000,
+                easing: "linear",
+                begin: function () { },
+                complete: function () {
+                    $el.on("mouseover", function () {
+                        $.Velocity.RunSequence(seq);
+                    })
+                },
+                progress: function (elements, complete, remaining, start, tweenValue) {
+                    var curValue = 180 * complete;
+                    if (curValue > 90) {
+                        $el.attr("src", 'images/1.jpg');
+                    }
+                }
+            }
+        }];
+        $el.on("mouseover", function () {
+            $.Velocity.RunSequence(seq);
+        })
+    </script>
+
+
+    <style>
+
+    </style>
+    <div>
+        <img class="img-test-rotateY" id="img-test-rotateY-2" src="images/1.jpg" />
+    </div>
+    <script>
+        $(function () {
+            var num = 0;
+            var $el = $("#img-test-rotateY-2");
+            $el.on("mouseover", foo);
+            function foo() {
+                $el.parent().off("mouseover");
+                var timeid = setInterval(change, 10);
+                function change() {
+                    var imgSrc = $el.attr("src");
+                    if (num <= 180) {
+                        if (num > 90 && imgSrc != "images/2.jpg") $el.attr("src", 'images/2.jpg');
+                        $el.css({ transform: "rotateY(" + num + "deg)" })
+                        num = num + 1;
+                    } else if (num <= 360) {
+                        if (num >= 270 && imgSrc != "images/1.jpg") $el.attr("src", 'images/1.jpg');
+                        $el.css({ transform: "rotateY(" + num + "deg)" })
+                        num = num + 1;
+                    } else {
+                        num = 0;
+                        clearInterval(timeid);
+                        $el.on("mouseover", foo);
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

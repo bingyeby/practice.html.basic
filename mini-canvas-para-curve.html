@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>无标题文档</title>
+</head>
+<body>
+<canvas id="can"></canvas>
+<script>
+    /*
+    * 获取抛物线各个属性值
+    * y = a * x * x + b * x + c
+    * */
+    function getPropertyOfParaCurve(x1, y1, x2, y2) {
+        let a = (y2 - y1) / (2 * x1 * x2 - x1 * x1 - x2 * x2);// 期望抛物线程度明显，则倍数此值
+        let b = ((y2 - y1) - a * (x2 * x2 - x1 * x1)) / (x2 - x1);
+        let c = y1 - a * x1 * x1 - b * x1;
+        return {a, b, c};
+    }
+
+    /*
+    * 根据抛物线属性获取某个点的坐标y
+    * y = a * x * x + b * x + c
+    * 已知a、b、c、x；求y；
+    * */
+    function getPoint(t, property) {
+        return property.a * t * t + property.b * t + property.c;
+    }
+
+    /*
+    * 绘制抛物线对象
+    * */
+    function LineWithParaCurve() {
+        this.can = document.getElementById('can');
+        this.ctx = this.can.getContext("2d");
+    }
+
+    LineWithParaCurve.prototype = {
+        init: function () {
+            this.can.width = 600;
+            this.can.height = 600;
+            this.can.style.border = "1px solid red";
+            return this;
+        },
+        r: function (value) {
+            return this.can.height - value;
+        },
+        clear: function () {
+            this.ctx.clearRect(0, 0, this.can.width, this.can.height);
+        },
+        showLine: function (endPoint) {
+            let property = getPropertyOfParaCurve(0, 0, ...endPoint);
+            this.ctx.moveTo(0, 0);
+            this.ctx.beginPath();
+            let pointX = 1;
+            while (pointX < endPoint[0]) {
+                this.ctx.lineTo(pointX, this.r(getPoint(pointX, property)));
+                pointX++;
+            }
+            this.ctx.stroke();
+            return this;
+        },
+        runBall: function (endPoint) {// [200,200]
+            let pointX = 0, speed = 1;
+            let property = getPropertyOfParaCurve(0, 0, endPoint[0], endPoint[1]);
+            let _run = () => { // function _run() {  // _run.bind(this)
+                this.ctx.clearRect(0, 0, this.can.width, this.can.height);
+                this.ctx.beginPath();
+                this.ctx.arc(pointX, this.r(getPoint(pointX, property)), 2, 0, 2 * Math.PI);
+                this.ctx.closePath();
+                this.ctx.fill();
+                pointX < endPoint[0] && requestAnimationFrame(_run);
+                pointX++
+            };
+            requestAnimationFrame(_run);
+        }
+    };
+
+    let paraCureCan = new LineWithParaCurve().init();
+    paraCureCan.showLine([200, 200]);
+    paraCureCan.runBall([200, 200]);
+    paraCureCan.can.onclick = function (e) {
+        this.clear();// 清屏
+        this.showLine([e.pageX - e.target.offsetLeft, this.r(e.pageY - e.target.offsetTop)]);// 绘制
+    }.bind(paraCureCan);
+</script>
+</body>
+</html>
+
+
+

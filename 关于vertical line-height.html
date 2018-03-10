@@ -1,0 +1,575 @@
+<style>
+    @font-face {
+        font-family: "Lato";
+        font-style: normal;
+        font-weight: 300;
+        src: local("Lato Light"), local("Lato-Light"), url(http://themes.googleusercontent.com/static/fonts/lato/v7/KT3KS9Aol4WfR6Vas8kNcg.woff) format("woff")
+    }
+    @font-face {
+        font-family: "Lato";
+        font-style: normal;
+        font-weight: 400;
+        src: local("Lato Regular"), local("Lato-Regular"), url(http://themes.googleusercontent.com/static/fonts/lato/v7/9k-RPmcnxYEPm8CNFsH2gg.woff) format("woff")
+    }
+    @font-face {
+        font-family: "Lato";
+        font-style: italic;
+        font-weight: 300;
+        src: local("Lato Light Italic"), local("Lato-LightItalic"), url(http://themes.googleusercontent.com/static/fonts/lato/v7/2HG_tEPiQ4Z6795cGfdivD8E0i7KZn-EPnyo3HZu7kw.woff) format("woff")
+    }
+
+    html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, ul, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        vertical-align: baseline
+    }
+
+    body {
+        background: #CAC6AD;
+    }
+
+    p, h3 {
+        margin: 0 0 1rem 1rem;
+    }
+
+    figure {
+        width: 90%;
+        margin: 0 auto 3em;
+        font: 300 2em/1 "Lato";
+    }
+
+    .line {
+        display: inline-block;
+        width: 100%;
+        border-top: 2px dotted #000;
+        position: relative;
+        margin-right: -100%;
+    }
+
+    .red {
+        border-color: red;
+    }
+
+    .coral {
+        border-color: coral;
+    }
+
+    .blue {
+        border-color: blue;
+    }
+
+    .green {
+        border-color: limegreen;
+    }
+
+    .box {
+        display: inline-block;
+        min-height: 1em;
+        min-width: 1em;
+    }
+
+    .top {
+        vertical-align: top;
+        display: inline-block;
+    }
+
+    .bottom {
+        vertical-align: bottom;
+        display: inline-block;
+    }
+
+    .text-top {
+        vertical-align: text-top;
+        display: inline-block;
+    }
+
+    .text-bottom {
+        vertical-align: text-bottom;
+        display: inline-block;
+    }
+
+    .baseline {
+        vertical-align: baseline;
+        display: inline-block;
+    }
+
+    .center {
+        display: inline-block;
+        text-align: center;
+        width: 100%;
+    }
+
+    .middle {
+        vertical-align: middle;
+        display: inline-block;
+    }
+
+    .sub {
+        vertical-align: sub;
+        display: inline-block;
+    }
+
+    .super {
+        vertical-align: super;
+        display: inline-block;
+    }
+
+    .tall {
+        height: 2em;
+    }
+
+    .taller {
+        height: 4em;
+    }
+
+    .quad {
+        width: 4em;
+    }
+
+    .short {
+        min-height: 0.5em;
+    }
+
+
+    .bg-grey {
+        background-color: #d3d3d3;
+    }
+
+    .bg-yellow {
+        background-color: #fcdb9a;
+    }
+
+    .large {
+        font-size: 1.5em;
+    }
+
+    .three > div {
+        margin-right: 2.5%;
+        width: 30%;
+        display: inline-block;
+    }
+
+    .two > div {
+        margin-right: 4%;
+        width: 45%;
+        display: inline-block;
+    }
+
+    .tall-line-height {
+        line-height: 2;
+    }
+
+    .short-line-height {
+        line-height: 0.5;
+    }
+
+    .one-line-height {
+        line-height: 1;
+    }
+
+    .inline-overlay {
+        display: inline-block;
+        width: 100%;
+        margin-right: -100%;
+        position: relative;
+    }
+
+
+    .show-box-model {
+        display: inline-block;
+        background: #c1cd89;
+        width: 1.5em;
+        height: 1.5em;
+        border: .5em solid #fcdb9a;
+        margin: .5em;
+        padding: .5em;
+    }
+
+    .box-model-content {
+        display: block;
+        background: #8ab3bf;
+        width: 100%;
+        height: 100%;
+    }
+
+    .overflow {
+        overflow: hidden;
+    }
+
+    .nowrap {
+        white-space: nowrap;
+    }
+
+    .max-third-width {
+        max-width: 30%;
+    }
+</style>
+
+<body>
+<figure>
+    <span class="red top line"></span><!--
+	 --><span class="coral bottom line"></span><!--
+	 --><span class="center">
+	        a tall
+	        <span class="tall box bg-grey baseline"></span> in a line of text.
+	    </span>
+    <br>
+    <span class="coral bottom line"></span><!--
+	 --><span class="center">
+	        a short
+	        <span class="short box bg-grey baseline"></span> in a line of text.
+	    </span>
+    <br>
+    <span class="coral bottom line"></span><!--
+	 --><span class="center">
+	        <span class="middle">This</span>
+	        <span class="tall box bg-grey text-top"></span>
+	        <span class="top">can</span>
+	        <span class="tall box bg-grey text-bottom"></span>
+	        <span class="bottom">happen.</span>
+	    </span>
+</figure>
+
+<h3>Inline Element</h3>
+<figure class="three">
+    <div class="large">
+        <span class="green text-top line"></span><!--
+	     --><span class="green text-bottom line"></span><!--
+	     --><span class="red top line"></span><!--
+	     --><span class="red bottom line"></span><!--
+	     --><span class="blue baseline line"></span><!--
+	     --><span class="center">aA? qQ</span>
+    </div><!--
+	 --><div class="large tall-line-height">
+    <span class="green text-top line"></span><!--
+	     --><span class="green text-bottom line"></span><!--
+	     --><span class="red top line"></span><!--
+	     --><span class="red bottom line"></span><!--
+	     --><span class="blue baseline line"></span><!--
+	     --><span class="center"><!--
+			  	 --><span>aA? qQ</span>
+			  	</span>
+</div><!--
+	 --><div class="large short-line-height">
+    <span class="green text-top line"></span><!--
+	     --><span class="green text-bottom line"></span><!--
+	     --><span class="inline-overlay"><!--create a span element on purpose where no text lies in order to show the half line height because of pattern 3-->
+	            <span class="red top line"></span><!--
+	         --><span class="red bottom line"></span>
+	        </span><!--
+	     --><span class="blue baseline line"></span><!--
+	     --><span class="center">aA? qQ</span>
+</div>
+</figure>
+
+<h3>Inline-Block Element</h3>
+<figure class="three">
+    <div class="top">
+        <span class="red top line"></span><!--
+	     --><span class="red bottom line"></span><!--
+	     --><span class="blue baseline line"></span><!--
+	     --><div class="show-box-model">
+        <div class="box-model-content">gx</div>
+    </div>
+    </div>
+    <div class="top">
+        <span class="red top line"></span><!--
+	     --><span class="red bottom line"></span><!--
+	     --><span class="blue baseline line"></span><!--
+	     --><div class="show-box-model overflow">
+        <div class="box-model-content">gx</div>
+    </div>
+    </div>
+    <div class="top">
+        <span class="red top line"></span><!--
+	     --><span class="red bottom line"></span><!--
+	     --><span class="blue baseline line"></span><!--
+	     --><div class="show-box-model">
+        <div class="box-model-content"></div>
+    </div>
+    </div>
+</figure>
+
+<h3>Line Box</h3>
+<figure>
+			<span class="large">
+			    <span class="green text-top line"></span><!--
+			 --><span class="green text-bottom line"></span><!--
+			 --><span class="red top line"></span><!--
+	     --><span class="red bottom line"></span><!--
+	     --><span class="blue baseline line"></span><!--
+	     --><span class="inline-overlay">x</span><!--
+	     --><span class="center">
+							<span class="middle bg-grey">This</span>
+							<span class="tall box bg-grey text-top"></span>
+							<span class="top bg-grey">can</span>
+							<span class="tall box bg-grey text-bottom"></span>
+							<span class="bottom bg-grey">happen.</span>
+	     		</span>
+			</span>
+</figure>
+
+<h3>Aligning the Element¡¯s Baseline Relative To the Line Box¡¯s Baseline</h3>
+<figure>
+			<span class="large nowrap">
+					<span class="blue baseline line"></span><!--
+			 --><span>x</span><!--
+			 --><span class="center">
+							<span class="baseline">baseline</span>
+							<span class="sub">
+									<span class="blue baseline line"></span>sub
+							</span>
+							<span class="super">
+									<span class="blue baseline line"></span>super
+							</span>
+							<span class="baseline" style="vertical-align: -50%;">
+									<span class="blue baseline line"></span>-50%
+							</span>
+							<span class="baseline" style="vertical-align: 10px;">
+									<span class="blue baseline line"></span>+10px
+							</span>
+					</span>
+			</span>
+</figure>
+
+<h3>Aligning the Element¡¯s Outer Edges Relative To the Line Box¡¯s Baseline</h3>
+<figure>
+			<span class="large nowrap">
+					<span class="coral middle line"></span><!--
+			 --><span class="baseline">
+							<span class="blue baseline line"></span><!--
+					 --><span>x</span>
+					</span><!--
+			 --><span class="center">
+							<span class="middle bg-grey">
+									<span class="red top line"></span><!--
+					 --><span class="red bottom line"></span>middle
+					 		</span>
+					</span>
+			</span>
+</figure>
+
+<h3>Aligning the Element¡¯s Outer Edges Relative To the Line Box¡¯s Text Box</h3>
+<figure class="nowrap">
+    <span class="green text-top line"></span><!--
+	 --><span class="green text-bottom line"></span><!--
+	 --><span class="baseline tall-line-height">
+				 		<span class="red top line"></span><!--
+				 --><span class="red bottom line"></span><!--
+				 --><span class="blue baseline line"></span>x
+	 		</span>
+	 		<span class="center">
+	 			<span class="text-top">
+		 				<span class="red top line"></span><!--
+				 --><span class="red bottom line"></span>text-top
+	 			</span>
+	 			<span class="text-bottom">
+		 				<span class="red top line"></span><!--
+				 --><span class="red bottom line"></span>text-bottom
+	 			</span>
+	 		</span>
+</figure>
+
+<h3>Aligning the Element¡¯s Outer Edges Relative To the Line Box¡¯s Outer Edges</h3>
+<figure class="nowrap tall-line-height">
+    <span class="red top line"></span><!--
+	 --><span class="red bottom line"></span><!--
+	 --><span class="baseline">
+	 				<span class="green text-top line"></span><!--
+			 --><span class="green text-bottom line"></span>x
+	 		</span>
+	 		<span class="center">
+	 		 		<span class="top one-line-height">
+	 	 					<span class="red top line"></span><!--
+	 	 			 --><span class="red bottom line"></span>top
+	 		 		</span>
+	 		 		<span class="bottom one-line-height">
+	 	 					<span class="red top line"></span><!--
+	 	 			 --><span class="red bottom line"></span>bottom
+	 		 		</span>
+	 		</span>
+</figure>
+
+<h3>Centering an Icon</h3>
+<figure class="two">
+    <div class="nowrap top">
+					<span class="center">
+							<span class="box bg-grey middle"></span>
+							Centered?
+					</span>
+        </span>
+    </div>
+    <div class="nowrap top">
+					<span class="center">
+							<span class="box bg-grey middle"></span>
+							<span class="middle">
+					 		Centered!
+					 		</span>
+					</span>
+    </div>
+</figure>
+<figure class="two">
+    <div class="nowrap top">
+        <span class="blue baseline line"></span><!--
+			 --><span class="coral middle line"></span><!--
+			 --><span>x</span>
+					<span class="center">
+							<span class="box bg-grey middle"></span>
+							<span class="baseline">
+					 				<span class="red top line"></span><!--
+					 		 --><span class="red bottom line"></span>Centered?
+					 </span>
+					</span>
+    </div>
+    <div class="nowrap top">
+        <span class="blue baseline line"></span><!--
+			 --><span class="coral middle line"></span><!--
+			 --><span>x</span>
+					<span class="center">
+							<span class="box bg-grey middle"></span>
+							<span class="middle">
+					 				<span class="red top line"></span><!--
+					 		 --><span class="red bottom line"></span>Centered!
+					 </span>
+					</span>
+    </div>
+</figure>
+
+<h3>Movement Of the Line Box¡¯s Baseline</h3>
+<figure class="two">
+    <div class="nowrap top">
+        <span class="green text-top line"></span><!--
+			 --><span class="green text-bottom line"></span><!--
+			 --><span class="red top line"></span><!--
+			 --><span class="red bottom line"></span><!--
+			 --><span class="blue baseline line"></span><!--
+			 --><span class="center">
+			 				<span class="box taller bg-grey text-bottom"></span>
+			 				<span class="box short bg-grey"></span>
+			 		</span>
+    </div>
+    <div class="nowrap top">
+        <span class="green text-top line"></span><!--
+			 --><span class="green text-bottom line"></span><!--
+			 --><span class="red top line"></span><!--
+			 --><span class="red bottom line"></span><!--
+			 --><span class="blue baseline line"></span><!--
+			 --><span class="center">
+			 				<span class="box taller bg-grey text-top"></span>
+			 				<span class="box short bg-grey"></span>
+			 		</span>
+    </div>
+</figure>
+
+<figure class="three">
+    <div class="nowrap top">
+        <span class="green text-top line"></span><!--
+			 --><span class="green text-bottom line"></span><!--
+			 --><span class="red top line"></span><!--
+			 --><span class="red bottom line"></span><!--
+			 --><span class="blue baseline line"></span><!--
+			 --><span class="center">
+			 				<span class="box taller bg-grey text-bottom"></span>
+			 				<span class="box taller bg-grey text-top"></span>
+			 		</span>
+    </div>
+    <div class="nowrap top">
+        <span class="green text-top line"></span><!--
+			 --><span class="green text-bottom line"></span><!--
+			 --><span class="red top line"></span><!--
+			 --><span class="red bottom line"></span><!--
+			 --><span class="blue baseline line"></span><!--
+			 --><span class="center">
+			 				<span class="box taller bg-grey text-bottom"></span>
+			 				<span class="box taller bg-grey text-top"></span>
+			 				<span class="box taller bg-grey middle"></span>
+			 		</span>
+    </div>
+    <div class="top">
+        <span class="green text-top line"></span><!--
+			 --><span class="green text-bottom line"></span><!--
+			 --><span class="red top line"></span><!--
+			 --><span class="red bottom line"></span><!--
+			 --><span class="blue baseline line"></span><!--
+			 --><span class="center">
+			 				<span class="box taller bg-grey text-bottom"></span>
+			 				<span class="box taller bg-grey text-top"></span>
+			 				<span style="vertical-align: 100%;" class="box taller bg-grey baseline"></span>
+			 		</span>
+    </div>
+</figure>
+
+<h3>There Might Be a Little Gap Below Inline-Level Elements</h3>
+<figure class="two">
+    <div class="top">
+        <ul class="bg-yellow center">
+            <li class="max-third-width bg-grey taller quad baseline"></li>
+            <li class="max-third-width bg-grey taller quad baseline"></li>
+            <li class="max-third-width bg-grey taller quad baseline"></li>
+        </ul>
+    </div>
+    <div class="top">
+        <span class="green text-top line"></span><!--
+			 --><span class="green text-bottom line"></span><!--
+			 --><span class="red top line"></span><!--
+			 --><span class="red bottom line"></span><!--
+			 --><span class="blue baseline line"></span><!--
+			 --><ul class="bg-yellow center">
+        <li class="max-third-width bg-grey taller quad baseline"></li>
+        <li class="max-third-width bg-grey taller quad baseline"></li>
+        <li class="max-third-width bg-grey taller quad baseline"></li>
+    </ul>
+    </div>
+</figure>
+
+<figure class="two">
+    <div class="top">
+        <ul class="bg-yellow center">
+            <li class="middle max-third-width bg-grey taller quad baseline"></li>
+            <li class="middle max-third-width bg-grey taller quad baseline"></li>
+            <li class="middle max-third-width bg-grey taller quad baseline"></li>
+        </ul>
+    </div>
+    <div class="top">
+        <span class="green text-top line"></span><!--
+			 --><span class="green text-bottom line"></span><!--
+			 --><span class="red top line"></span><!--
+			 --><span class="red bottom line"></span><!--
+			 --><span class="blue baseline line"></span><!--
+			 --><ul class="bg-yellow center">
+        <li class="middle max-third-width bg-grey taller quad baseline"></li>
+        <li class="middle max-third-width bg-grey taller quad baseline"></li>
+        <li class="middle max-third-width bg-grey taller quad baseline"></li>
+    </ul>
+    </div>
+</figure>
+
+<h3>what does the following code mean?</h3>
+<pre>
+	.box.taller {
+	    height: 4em
+	}
+</pre>
+<p>It means it works only if your tag's class encompassing both 'box' and 'taller'.</p>
+<h3>Some patterns</h3>
+<ol>
+    <li>Except for the first line, lines set 'margin-right: -100%;' would automatically jump to the upper line.</li>
+    <li>With the magic 'margin-right: -100%;' is all inline-block elements set this property would interact with each other as if they are on the same line!</li>
+    <li>The red lines represent the the top and bottom edge of the line box(we should find which line box they represent). The distance between red lines is the height of the line box. Notice a inline elements' height of line box is implicit if you select the element in chrome dev tool, but you can apply 'display: inline-block' to the element and you would find the height of its line box.</li>
+    <li>The green line with 'vertical-align: text-top;' represent the top edge of the content area of inline elements whose font-size is equal to its parent, likewise the green line with 'vertical-align: text-bottom;'.</li>
+    <li>For inline elements, the text area your pointer could select is a part of the line box.</li>
+    <li>For inline elements, the blue-covered area you see in Chrome Dev Tools if you select the element is the content area but, by definition, its height is mysterious 'auto', which is defined by its font-size and font-family, and excludes leading.</li>
+    <li>For inline-block elements, the text area your pointer could select is the content area.</li>
+    <li>For inline-block elements, the blue-covered area you see in Chrome Dev Tools if you select the element is the content box whose height is 'line-height', which means considering the leading, which could be negative. The 'vertical-align' property aligns the element using the margin box of its inline-block display (even the element is a inline element). ---from <a href="http://www.w3.org/TR/CSS21/visudet.html#propdef-vertical-align">W3C</a></li>
+    <li>For inline-block elements, the height of the text box of an inline-block element is greater than the height of the content area (including its line height) if the inline-block element is set 'line-height: 1;'</li>
+    <li>The height of the line box is determined by its content. There is no property to set the line box's height.
+        <ul style="padding-left:20px;">
+            <li>If the line is empty its only content is the text-box. In this case the height of the line box equals the height of the text-box, i.e. the line-height. This is also true, if the line only contains text.</li>
+
+            <li>If the line has content, its content is vertically aligned in a way that it needs the least space. The resulting height is the height of the line box.</li>
+
+            <li>The line-height is the lower bound of the line box's height. The line box gets taller if its content would not fit into it otherwise.</li>
+        </ul>
+</ol>
+</body>

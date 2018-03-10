@@ -1,0 +1,333 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+</head>
+<style>
+    canvas {
+        outline: 1px solid lightcoral;
+    }
+</style>
+<body>
+
+<canvas id="getCenterPoint" width="500" height="500"></canvas>
+<script>
+    function tan(x) {
+        return Math.tan(x * Math.PI / 180);
+    }
+
+    /**
+     * 获取两点中轴线上的某个点
+     * a A点
+     * b B点
+     * q 角度
+     * */
+    function getCenterPoint(x1, y1, x2, y2, q) {
+        let k1 = (y2 - y1) / (x2 - x1);
+        let k2 = -1 / k1;
+        let b2 = ((y1 + y2) * k1 + (x1 + x2)) / (2 * k1);
+        let k3 = (k1 + tan(q)) / (1 - k1 * tan(q));
+        let b3 = y1 - k3 * x1;
+        let x3 = (b3 - b2) / (k2 - k3);
+        let y3 = k3 * x3 + b3;
+        return [x3, y3];
+    }
+
+    /* test */
+    (function () {
+        let can = document.getElementById("getCenterPoint"),
+            ctx = can.getContext("2d");
+        // 绘制辅助线
+        ctx.beginPath();
+        ctx.moveTo(0, 0);
+        ctx.lineTo(100, 100);
+        ctx.stroke();
+
+        // 绘制点
+        ctx.beginPath();
+        ctx.arc(...getCenterPoint(0, 0, 100, 100, -30), 5, 0, Math.PI * 2, true);
+        ctx.fillStyle = "red";
+        ctx.fill();
+
+    })();
+</script>
+
+<canvas id="PercentChart" width="500" height="500"></canvas>
+<script>
+    class PercentChart {
+        constructor() {
+            this.can = document.getElementById("PercentChart");
+            this.ctx = this.can.getContext("2d");
+            this.width = this.can.width;
+            this.height = this.can.height;
+            this.centerX = this.width * 0.5;// 中心点
+            this.centerY = this.height * 0.5;
+        }
+
+        static angleToValue(angle) {//  将角度转换为数值
+            return angle * Math.PI / 180;
+
+        }
+
+        // 绘制底纹
+        baseDraw() {
+            this.ctx.save();
+            this.ctx.translate(this.centerX, this.centerY);
+            this.ctx.rotate(PercentChart.angleToValue(-90));
+
+            this.ctx.beginPath();// begin
+            this.ctx.strokeStyle = "#ffbab1";
+            this.ctx.lineWidth = 20;
+            this.ctx.arc(0, 0, 100, 0, Math.PI * 2, false);
+            this.ctx.stroke();
+            this.ctx.closePath();// end
+
+            this.ctx.restore();
+        }
+
+        // 绘制比例
+        outerDraw(n) {
+            this.ctx.save();
+            this.ctx.translate(this.centerX, this.centerY);
+            this.ctx.rotate(PercentChart.angleToValue(-90));
+
+            this.ctx.beginPath();// begin
+            this.ctx.strokeStyle = "#ef7093";
+            this.ctx.lineWidth = 20;
+            this.ctx.arc(0, 0, 100, 0, PercentChart.angleToValue(n / 100 * 360), false);
+            this.ctx.stroke();
+            this.ctx.closePath();// end
+
+            this.ctx.restore();
+        }
+
+        // 书写当前值
+        textDraw(n) {
+            this.ctx.fillStyle = "#F47C7C";
+            this.ctx.font = "40px Arial";
+            this.ctx.textAlign = "center";
+            this.ctx.textBaseline = "middle";
+            this.ctx.fillText(n.toFixed(0) + "%", this.centerX, this.centerY);
+        }
+
+        // 绘制所有
+        draw() {
+            let value = 0;
+            let end = 80;
+            let speed = 0.2;
+            let time = 0;
+            (function _run() {
+                this.ctx.clearRect(0, 0, this.width, this.height);// 画布重置
+                value += speed;// 若想先慢后快： time = time + 0.2;value = time * time;
+                this.baseDraw();// 1
+                this.outerDraw(value);// 2
+                this.textDraw(value);// 3
+                value <= end && requestAnimationFrame(_run.bind(this));// 判断是否继续执行
+            }.bind(this))();
+        }
+    }
+
+    new PercentChart().draw();
+</script>
+
+<canvas id="run" width="500" height="500"></canvas>
+<script>
+    class Ball {
+        /*
+        * 球的位置 半径
+        * 画布 画笔 画布高宽
+        * */
+        constructor(can) {
+            this.x = 0;
+            this.y = 0;
+            this.r = 10;
+            this.can = can;
+            this.ctx = this.can.getContext("2d");
+            this.w = this.can.width;
+            this.h = this.can.height;
+        }
+
+        static angleToValue(angle) {
+            return angle * Math.PI / 180;
+        }
+
+        drawBall() {
+            this.ctx.clearRect(0, 0, this.w, this.h);
+            this.ctx.beginPath(); // 将此行注释可查看运动轨迹
+            this.ctx.fillStyle = "blue";
+            this.ctx.arc(this.x, this.y, this.r, Ball.angleToValue(0), Ball.angleToValue(360), false);
+            this.ctx.fill();
+            this.ctx.closePath();
+        }
+
+        lineRun() {// 直线运动
+            let beginx = 0, beginy = 100,
+                endx = 300, endy = 100;
+            let speed = 1;
+            this.x = beginx;
+            this.y = beginy;
+            (function _run() {
+                this.x += speed;
+                this.drawBall();
+                this.x < endx && requestAnimationFrame(_run.bind(this));
+            }.bind(this))()
+        }
+
+        freeFallRun() {// 自由落体 从最高处落下(高度：this.can.h)
+            let ballHeight = this.h;
+            let v = 1;
+            let t = 0;
+            let k = 0;
+            this.x = 0;
+            let direct = 1;
+            (function _run() {
+                // this.x += 0.3;// 横向移动
+                if (direct > 0) {
+                    if (this.y < this.h) {
+                        this.y = this.h - ballHeight + 0.05 * t * t;
+                        t++;
+                        k = t;
+                    } else {
+                        ballHeight = 0.8 * ballHeight;// 后次回弹的高度
+                        direct *= -1;
+                        t = 0;
+                    }
+                } else {
+                    if (this.y > (this.h - ballHeight)) {
+                        this.y = this.h - (ballHeight - 0.05 * (t - k) * (t - k));// 100为落地过程中耗费的总时间
+                        t++;
+                    } else {
+                        direct *= -1;
+                        t = 0;
+                    }
+                }
+                if (this.y > 500) {
+                    debugger;
+                }
+                this.drawBall();
+                ballHeight > 1 && requestAnimationFrame(_run.bind(this));
+            }.bind(this))()
+        }
+
+        wavingRun() {// 波形运动
+            let angle = 0;// X
+            let swing = 50;// Y
+            (function _run() {
+                this.y = this.h * 0.5 + Math.sin(angle) * swing;// 基础高度为画布的一半
+                this.x += 2;
+                angle += 0.1;
+                this.drawBall();
+                this.x < this.w && requestAnimationFrame(_run.bind(this))
+            }.bind(this))();
+        }
+
+        circleRun() {// 圆形运动
+            let angle = 0;
+            let swing = 100;// 圆的半径
+            //    在无beginPath的情况下，可以实现画圆
+            (function _run() {
+                this.x = this.w * 0.5 + Math.cos(angle) * swing;// r * cos()  |  r * sin()
+                this.y = this.h * 0.5 + Math.sin(angle) * swing;
+                angle += 0.05;
+                this.drawBall();
+                requestAnimationFrame(_run.bind(this))
+            }.bind(this))();
+        }
+
+        zoomRun() {// 缩放显示
+            let angle = 0;
+            (function _run() {
+                this.x = this.w * 0.5;
+                this.y = this.h * 0.5;
+                this.r = 30 + Math.sin(Ball.angleToValue(angle)) * 10;// 基础值 30 [+10 -10]
+                angle += 3;
+                this.drawBall();
+                requestAnimationFrame(_run.bind(this));
+            }.bind(this))();
+        }
+    }
+
+    new Ball(document.getElementById("run"))
+    // .lineRun()
+    //     .wavingRun()
+    //     .circleRun()
+    //     .zoomRun();
+        .freeFallRun()
+</script>
+
+<canvas id="chart2" width="500" height="500"></canvas>
+<script>
+
+    function value2deg(value) {
+        return 180 * value / Math.PI;
+    }
+
+    function deg2value(deg) {
+        return Math.PI * deg / 180;
+    }
+
+
+    let can = document.getElementById("chart2");
+    let ctx = can.getContext("2d");
+    ctx.save();
+    ctx.translate(can.width * 0.5, can.height * 0.5);
+    ctx.rotate(deg2value(-90));
+    ctx.strokeStyle = "red";
+
+    ctx.lineWidth = 15;
+    ctx.lineCap = "cott";
+
+
+    let data = [1, 2, 4, 3, 2];
+    let color = ["lightcoral", "lightgreen", "lightblue", "blue", "green"];
+    let total = data.reduce((a, b) => a + b);
+    let deg = data.map(n => n / total * 360);
+    /*
+    * 一次性绘图，将比例汇出，中间的留白通过+——2实现
+    * */
+    let curDeg = 0;
+    deg.forEach(function (n, i) {
+        ctx.beginPath();
+        ctx.strokeStyle = color[i];
+        ctx.arc(0, 0, 40, deg2value(curDeg + 2), deg2value((curDeg += n) - 2), false);
+        ctx.stroke();
+    });
+
+    /*
+    * 动画绘制
+    * */
+    /*
+    * 获取区间位置
+    * 原始[0,1,2,3,4]
+    * 转换[0,0+1,0+1+2,0+1+2+3...]
+    * 获取value在其中的index
+    * */
+    function getIndex(value) {
+        let index = -1;
+        let current = 0;
+        for (var i = 0; i < deg.length - 1; i++) {
+            current = current + deg[i];
+            if (value >= current && value < current + deg[i + 1]) {
+                index = i;
+            }
+        }
+        return index;
+    }
+
+    let start = 0;
+    requestAnimationFrame(function _run() {
+        ctx.beginPath();
+        ctx.strokeStyle = color[getIndex(start)];
+        ctx.arc(0, 0, 90, deg2value(start - 1), deg2value(start += 2), false);// 绘制很小的一段弧线
+        ctx.stroke();
+        start < 360 && requestAnimationFrame(_run);
+    })
+
+
+</script>
+
+
+</body>
+</html>

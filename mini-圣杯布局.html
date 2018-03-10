@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>css 圣杯布局</title>
+    <style type="text/css">
+        #container {
+            padding-left: 200px; /*left column width   核心位置所在*/
+            padding-right: 200px; /*right column width   核心位置所在*/
+            overflow: hidden;
+        }
+
+        body {
+            min-width: 988px;
+        }
+
+        div {
+            outline: 1px solid lightyellow;
+        }
+
+        #head {
+            text-align: center;
+        }
+
+        /*关于双飞燕布局采用margin-left margin-right*/
+        #container .column {
+            position: relative;
+            float: left;
+            min-height: 300px;
+        }
+
+        #center {
+            background: #eee;
+            width: 100%;
+            overflow: visible;
+        }
+
+        #left {
+            width: 200px;
+            background: aliceblue;
+            margin-left: -100%;
+            right: 200px; /*180+60(padding total)+ 30(margin)*/
+        }
+
+        #right {
+            width: 200px;
+            background: aliceblue;
+            margin-right: -200px;
+            /*full width  + center column padding 尽量大一点，chrome浏览器下，这个div浮动不上来*/
+        }
+
+        #footer {
+            text-align: center;
+        }
+
+        /*IE6 fix*/
+
+        * html #left {
+            left: 100px;
+        }
+    </style>
+</head>
+
+<body>
+<div id="head">
+    <h1>head</h1>
+</div>
+
+<div id="container">
+    <div id="center" class="column">
+        center
+    </div>
+    <div id="left" class="column">
+        left
+    </div>
+
+    <div id="right" class="column">
+        right
+    </div>
+</div>
+
+<div id="footer">
+    <h1>footer</h1>
+</div>
+</body>
+</html>
+<!--
+圣杯布局(左右两栏固定，中间部分自适应)
+
+
+1、首先我们需要一个简单的html结构来完成我们的的实验
+
+标准的3列的布局模式，左边列（left column） 的宽度是200px，右边宽度的是150px ，中间的宽度是100%
+
+2、我们开始对页面进行布局
+
+这里设置的center 的宽度为了100%不包括padding，让left div的宽度和我们上面在container流出的左边的padding一致。
+
+让左边的div移动到左上角。右边的div移动到右上角
+
+3、修复ie6下的bug
+* html #left {
+  left: 150px;
+}
+
+在ie6下，会出现看不到左边的div，
+-->

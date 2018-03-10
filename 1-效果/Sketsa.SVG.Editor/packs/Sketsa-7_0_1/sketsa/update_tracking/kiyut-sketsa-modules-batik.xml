@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?><module codename="kiyut.sketsa.modules.batik">
+    <module_version install_time="1348164863883" last="true" origin="installer" specification_version="1.8.0.1343635">
+        <file crc="1643842116" name="config/Modules/kiyut-sketsa-modules-batik.xml"/>
+        <file crc="1777685529" name="modules/ext/batik-all.jar"/>
+        <file crc="2331846347" name="modules/ext/js.jar"/>
+        <file crc="2268634152" name="modules/ext/xml-apis-ext.jar"/>
+        <file crc="357457500" name="modules/ext/xml-apis.jar"/>
+        <file crc="2430123450" name="modules/kiyut-sketsa-modules-batik.jar"/>
+    </module_version>
+</module>

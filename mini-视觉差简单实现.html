@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+</head>
+<body>
+<script src="./js/jquery-1.8.3.js"></script>
+<style>
+    .outer {
+        outline: 1px solid red;
+        position: relative;
+        width: 800px;
+        height: 600px;
+    }
+    .inner-1 {
+        background: lightgoldenrodyellow;
+        position: absolute;
+        left: 200px;
+        top: 100px;
+
+        width: 300px;
+        height: 400px;
+    }
+    .inner-2 {
+        background: lightgreen;
+        position: absolute;
+        left: 250px;
+        top: 150px;
+
+        width: 200px;
+        height: 100px;
+    }
+    .inner-3 {
+        background: lightcyan;
+        position: absolute;
+        left: 250px;
+        top: 390px;
+
+        width: 200px;
+        height: 10px;
+    }
+</style>
+<div class="outer">
+    <div class="inner-1"></div>
+    <div class="inner-2"></div>
+    <div class="inner-3"></div>
+</div>
+<script>
+    var outer = $(".outer");
+    var inA = $(".inner-1");
+    var inB = $(".inner-2");
+    var inC = $(".inner-3");
+    var inAOrigin = getOriginLT(inA);
+    var inBOrigin = getOriginLT(inB);
+    var inCOrigin = getOriginLT(inC);
+    outer.on("mousemove", function (e) {
+        var centerOfOuter = [outer.width(), outer.height()];
+        var changeValue = [e.clientX - centerOfOuter[0], e.clientY - centerOfOuter[1]];
+        changeLT(inA, inAOrigin, changeValue, 0.1);
+        changeLT(inB, inBOrigin, changeValue, 0.2);
+        changeLT(inC, inCOrigin, changeValue, 0.2);
+
+    });
+    function getOriginLT(target) {//获取元素的left top属性值(初始)
+        return {
+            "left": target.css("left"),
+            "top": target.css("top")
+        }
+    }
+    function changeLT(target, originValue, changeValue, deep) {//目标对象 原始值 变化值 变化比例
+        changeValue.forEach(function (n, i) {
+            var changeType = i == 0 ? "left" : "top";
+            target.css(changeType, parseInt(originValue[changeType]) + n * deep + "px");//比例0.1
+        });
+    }
+</script>
+
+</body>
+</html>

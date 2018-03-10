@@ -1,0 +1,162 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" href="./images/reset.css"/>
+</head>
+<body>
+<!------------------------------------------hover me 上下两端出现横线-[transition][:before][:after]--------------【1】------------------>
+<style>
+    #btn {
+        position: relative;
+        background: #1AAB8A;
+        color: #fff;
+        border: none;
+        height: 50px;
+        width: 100px;
+        cursor: pointer;
+        transition: 800ms ease all;
+    }
+    #btn:before, #btn:after {
+        content: '';
+        position: absolute;
+        height: 2px;
+        width: 0;
+        background: #1AAB8A;
+        transition: 800ms ease all;
+    }
+    #btn:before {
+        top: 0;
+        right: 0;
+    }
+    #btn:after {
+        left: 0;
+        bottom: 0;
+    }
+    #btn:hover {
+        background: #fff;
+        color: #1AAB8A;
+    }
+    #btn:hover:before, #btn:hover:after {
+        width: 100%;
+    }
+
+</style>
+<button id="btn">Hover me !</button>
+<!-------------------------------  loading 效果------[animation][:before][:after]-----------------【2】--------------------->
+<style>
+
+    .loader {
+        position: relative;
+        width: 250px;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+
+        text-transform: uppercase; /*大写*/
+        letter-spacing: 0.2em; /*字间距*/
+        font-weight: 900; /*字体加粗*/
+        color: #ce4233; /*字体的颜色*/
+    }
+    .loader::before,
+    .loader::after {
+        content: "";
+        display: block;
+        position: absolute;
+        -webkit-animation: load 2s infinite alternate ease-in-out;
+        animation: load 2s infinite alternate ease-in-out;
+    }
+    .loader:before {
+        top: 0;
+    }
+    .loader:after {
+        bottom: 0;
+    }
+    @-webkit-keyframes load {
+        0% {
+            left: 0;
+            width: 5%;
+            height: 50%;
+            background: RGBA(255, 0, 0, 1);
+        }
+        50% {
+            width: 20%;
+            height: 8%;
+            background: RGBA(255, 0, 0, 0.1);
+        }
+        100% {
+            left: 100%;
+            width: 5%;
+            height: 50%;
+            background: RGBA(255, 0, 0, 1);
+        }
+    }
+</style>
+<div class="loader">Loading...</div>
+<!---------------------------------------靠左导航，获取焦点  延时展出---------------------------【3】--------->
+<style>
+    #nav {
+        width: 20%;
+    }
+    #nav ul {
+        list-style: none;
+        margin: 0px;
+        padding: 0px;
+    }
+    #nav li {
+        float: none;
+        width: 100%;
+    }
+    #nav li a {
+        display: block;
+        width: 0px;
+        padding: 20px 0 20px 20px;
+        position: relative;
+        z-index: 2;
+        text-decoration: none;
+        text-align: left;
+        -webkit-box-sizing: border-box;
+        color: #444;
+        -webkit-transition: width 1s linear, color 1s;
+    }
+    #nav li:nth-child(1) a {
+        background: #3498db;
+    }
+    #nav li:nth-child(2) a {
+        background: #ffd071;
+    }
+    #nav li:nth-child(3) a {
+        background: #f0776c;
+    }
+    #nav li:nth-child(4) a {
+        background: #1abc9c;
+    }
+    #nav li a:hover {
+        color: #fff;
+        width: 100%;
+    }
+
+</style>
+<div id="nav">
+    <ul>
+        <li><a href="">Home</a></li>
+        <li><a href="">About</a></li>
+        <li><a href="">Work</a></li>
+        <li><a href="">Contact</a></li>
+    </ul>
+</div>
+<!------------------------------------------------------------------【】------>
+
+
+<!------------------------------------------------------------------【】------>
+
+
+<!------------------------------------------------------------------【】------>
+
+
+<!------------------------------------------------------------------【】------->
+
+
+</body>
+</html>

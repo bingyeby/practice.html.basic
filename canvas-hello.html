@@ -1,0 +1,77 @@
+<html>
+<headeer>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+</headeer>
+
+<div>
+
+</div>
+<style>
+    canvas {
+        outline: 1px solid red
+    }
+</style>
+<canvas id="test1" width="500" height="500"></canvas>
+<script>
+    function draw21(id) {
+        var canvas = document.getElementById(id)
+        var context = canvas.getContext("2d");
+        /*填充*/
+        {
+            // fillStyle strokeStyle  默认值均为 black
+            context.fillRect(0, 0, 80, 80);
+            context.fillStyle = "red";
+            context.fillRect(100, 0, 80, 80);
+            context.fillStyle = "rgba(255,0,0,0.2)";
+            context.fillRect(200, 0, 80, 80);
+        }
+        /*框框*/
+        {
+            context.strokeRect(0, 100, 80, 80);
+            context.strokeStyle = "blue";
+            context.strokeRect(100, 100, 80, 80);
+            context.strokeStyle = "rgba(255,0,0,0.2)";
+            context.strokeRect(200, 100, 80, 80);
+        }
+        /*清除*/
+        {
+            context.clearRect(50, 50, 240, 120);/*清楚中间的一大块区域*/
+        }
+        /*画圆*/
+        {
+            context.beginPath();
+            context.arc(200, 200, 100, 0, Math.PI * 2, true);
+            //不关闭路径路径会一直保留下去，当然也可以利用这个特点做出意想不到的效果
+            context.closePath();
+            context.fillStyle = 'rgba(0,255,0,0.25)';
+            context.fill();
+        }
+
+
+    }
+    draw21("test1")
+
+</script>
+<canvas id="test2">
+</canvas>
+<script>
+    /*
+        drawImage(image,sourceX,sourceY,sourceWidth,sourceHeight,destX,destY,destWidth, destHeight)
+        sourceX,sourceY,sourceWidth : 图片展示的大小
+        destX,destY,destWidth, destHeight : 裁剪的大小
+    */
+    var canvas = document.getElementById("test2");
+    var cxt = canvas.getContext("2d");
+    var img = new Image();
+    img.src = "tu0.jpg";
+
+    cxt.drawImage(img, 50, 50, 100, 100);
+    cxt.drawImage(img, 125, 125, 200, 50);
+    cxt.drawImage(img, 210, 210, 500, 500);
+
+    cxt.drawImage(img, 0, 0, 50, 50, 25, 25, 100, 100);
+    cxt.drawImage(img, 125, 125, 100, 100, 125, 125, 150, 150);
+    cxt.drawImage(img, 80, 80, 100, 100, 250, 250, 220, 220);
+</script>
+
+</html>

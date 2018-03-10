@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<module codename="org.nbs.java.ayatana">
+    <module_version install_time="1343153915147" last="true" origin="Java Ayatana" specification_version="1.2.3.1">
+        <file crc="435280350" name="config/Modules/org-nbs-java-ayatana.xml"/>
+        <file crc="421818230" name="libs/gtkextended-1.2.jar"/>
+        <file crc="4242106194" name="libs/jayatana-1.2.3.jar"/>
+        <file crc="421818230" name="modules/ext/gtkextended-1.2.jar"/>
+        <file crc="4242106194" name="modules/ext/jayatana-1.2.3.jar"/>
+        <file crc="2720557073" name="modules/org-nbs-java-ayatana.jar"/>
+        <file crc="2544481171" name="sources/gtkextended-1.2-src.zip"/>
+        <file crc="3379722333" name="sources/jayatana-1.2.3-src.jar"/>
+    </module_version>
+</module>

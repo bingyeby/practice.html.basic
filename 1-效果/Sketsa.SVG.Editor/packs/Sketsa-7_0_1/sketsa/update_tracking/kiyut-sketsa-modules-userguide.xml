@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><module codename="kiyut.sketsa.modules.userguide">
+    <module_version install_time="1348164875891" last="true" origin="installer" specification_version="7.0">
+        <file crc="925677352" name="config/Modules/kiyut-sketsa-modules-userguide.xml"/>
+        <file crc="588693182" name="modules/docs/kiyut-sketsa-modules-userguide.jar"/>
+        <file crc="56934892" name="modules/kiyut-sketsa-modules-userguide.jar"/>
+    </module_version>
+</module>

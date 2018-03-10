@@ -1,0 +1,142 @@
+<html>
+
+<head></head>
+<link rel="stylesheet" href="css/reset.css">
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+</style>
+
+<body>
+
+<canvas id="can"></canvas>
+<script>
+
+    /* 运动函数 */
+    let Tween = {
+        Linear: function (t, b, c, d) {
+            return c * t / d + b;
+        }
+    };
+
+    /* 遍历 */
+    Number.prototype.each = function (fn) {
+        let i = 0;
+        for (i < this; i < this; i++) {
+            fn(i);
+        }
+    };
+
+    function Charts(option) {
+        this.data = option;
+        this.can = document.getElementById("can");
+        this.ctx = this.can.getContext("2d");
+        this.space = 10;//间隔
+        this.winw = window.innerWidth;//浏览器高宽
+        this.winh = window.innerHeight;
+        this.w = this.data.width;//画布的高宽
+        this.h = this.data.height;
+        this.len = this.data.data.length;
+    }
+
+    Charts.prototype = {
+        constructor: Charts,
+        /*
+        * 转换坐标点
+        * */
+        r: function (value) {
+            return this.can.height - value;
+        },
+        init: function () {
+            this.can.width = 500;
+            this.can.height = 500;
+            return this;
+        },
+        showGrid: function () {
+            this.ctx.beginPath();
+            this.ctx.strokeStyle = "#f88700";
+            this.ctx.fillStyle = "rgba(255,188,188,0.35)";
+            this.ctx.lineWidth = 1;
+            let pre = 50;
+            Number(this.can.width).each(function (i) {
+                this.ctx.moveTo(0, i * pre);
+                this.ctx.lineTo(this.can.height, i * pre);
+            }.bind(this));
+            Number(this.can.width).each(function (i) {
+                this.ctx.moveTo(i * pre, 0);
+                this.ctx.lineTo(i * pre, this.can.height);
+            }.bind(this));
+            this.ctx.stroke();
+            return this;
+        },
+        /*
+        * 画一组线
+        * this.showLine([[0,450],[100,300],[200,400],[300,350]])
+        * */
+        showLine: function (arr) {
+            this.ctx.beginPath();
+            this.ctx.moveTo(...arr[0]);
+            arr.reduce(function (a, b) {
+                this.ctx.lineTo(...b);
+            }.bind(this));
+            this.ctx.stroke();// 画完连接点之间的连接
+            this.ctx.lineTo(300, this.r(0));
+            this.ctx.lineTo(0, this.r(0));
+            this.ctx.fill();// 填充
+        },
+        /*
+        * 展示图表
+        * */
+        show: function () {
+            let that = this;
+            let t = 0;// time
+            let b = 0;// start value
+            let c = 100;// change value
+            let d = 1;// end time
+            // [当前时间值 起始值 结束值 结束时间值] 定时递增时间值向结束时间值靠拢
+            // 设置时间案例 当前时间为0 结束时间值1 递增0.01 递增速度10ms
+            let speed = 0.01;
+
+            function _run() {
+                t += speed;
+                t >= d && clearInterval(timer);
+                this.ctx.clearRect(0, 0, 500, 500);//清空画布
+                this.showGrid();
+                this.showLine([
+                    [1, that.r(Tween.Linear(t, b, 100, d))],
+                    [100, that.r(Tween.Linear(t, b, 300, d))],
+                    [200, that.r(Tween.Linear(t, b, 100, d))],
+                    [300, that.r(Tween.Linear(t, b, 350, d))]
+                ]);
+            }
+
+            let timer = setInterval(_run.bind(this), 10);
+        }
+    };
+
+    /*
+    * test
+    * 绘制一条静态的线
+    *
+    * */
+    // new Charts({width: 100, height: 100, data: []}).init()
+    //     .showGrid().showLine([[0, 450], [100, 300], [200, 400], [300, 350]]);
+
+    new Charts({width: 100, height: 100, data: []}).init()
+        .show();
+
+    // document.getElementById("canvas").addEventListener("click",function  (e) {
+    //
+    // })
+
+</script>
+
+
+</body>
+
+</html>

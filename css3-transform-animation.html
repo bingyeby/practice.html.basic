@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        div {
+            width: 200px;
+            height: 100px;
+            border: 1px solid blue;
+            background: antiquewhite;
+        }
+
+
+    </style>
+    <script>
+        var alert=function(s){console.log(s);};
+    </script>
+</head>
+<body>
+<style>
+    .menu1{
+        width: 1000px;
+    }
+    .menu2{
+        width: 1000px;
+    }
+    .menu1 div{
+        float: left;
+        width: 100px;
+        height: 75px;
+        background: lemonchiffon;
+    }
+    .menu2 div{
+        margin:0 50px;
+        float: left;
+        width: 100px;
+        height: 75px;
+        background: lemonchiffon;
+    }
+</style>
+<div class="menu1">
+    <div style="-webkit-transform: rotate(10deg);">绕中心点顺时针旋转</div>
+    <div style="-webkit-transform: scale(0.5)">0.5倍数</div>
+    <div style="-webkit-transform: scale(0.5,1)">0.5倍数 1倍数</div>
+    <div style="-webkit-transform:translate(10px ,20px) ;">translate(10px,20px)</div>
+    <div style="-webkit-transform: skew(10deg);">skew(10deg)[x轴向y轴正方向10°]</div>
+    <div style="-webkit-transform: skew(10deg,10deg);"></div>
+</div>
+<div class="menu2">
+    <div style="-webkit-transform: matrix(1, 0, 0, 1, 30, 30);">matrix(1, 0, 0, 1, 30, 30)</div>
+    <div style="-webkit-transform: matrix(1.2,0,0,1.2,10,10);">matrix(1.2,0,0,1.2,10,10)</div>
+    <div style="-webkit-transform: matrix(1,0,0.5,1,10,10);">matrix(1,0,0.5,1,10,10)</div>
+    <div style="-webkit-transform: matrix(1,0.5,0,1,10,10);">matrix(1,0.5,0,1,10,10)</div>
+</div>
+
+<!--transition with the transform-->
+<!--特殊情况，hover前与hover后的transform-origin的值是有区别的-->
+<style>
+    .a1 {
+        -webkit-transform: scale(2,1);
+        -webkit-transform-origin: left bottom;
+        -webkit-transition: -webkit-transform  1s linear, background 3s linear;
+        /*-webkit-transition: 3s linear;*/
+    }
+    .a1:hover {
+        -webkit-transform: rotate(180deg) scale(2,1);
+        -webkit-transform-origin: center center;
+        background: brown;
+    }
+</style>
+<div style="" class="a1">transition with the transform</div>
+
+<!--关于心心的制作 transition and transform-->
+<style type="text/css">
+    .a2 {
+        cursor: pointer;
+    }
+    .a2 div{
+        position: absolute;
+    }
+    /*初始态*/
+    .a2 div:nth-child(1) {
+        -webkit-transition: all 1s linear;
+        background: blue;
+        -webkit-transform: scale(0, 0);
+    }
+
+    /*初始态*/
+    .a2 div:nth-child(2) {
+        -webkit-transition: all 1s linear;
+        background: red;
+    }
+
+    /**/
+    .a2:hover div:nth-child(1) {
+        -webkit-transform: scale(1, 1);
+        -webkit-transform-origin:  left bottom;
+    }
+    /**/
+    .a2:hover div:nth-child(2) {
+        -webkit-transform: scale(0, 0);
+        -webkit-transform-origin:  right top;
+    }
+</style>
+<div class="a2">
+    <div>1</div>
+    <div>2</div>
+</div>
+
+<!--心  transform-->
+<style type="text/css">
+    .heart {
+        position: relative;
+        width: 100px;
+        height: 80px;
+        background: blue;
+    }
+    .heart:before {
+        position: absolute;
+        content: "";
+        left: 50px;
+        top: 0;
+        width: 50px;
+        height: 80px;
+        background: red;
+        border-radius: 50px 50px 0 0;
+        -webkit-transform: rotate(-45deg);
+        -webkit-transform-origin: 0 100%;
+    }
+
+    .heart:after {
+        position: absolute;
+        content: "";
+        left: 0px;
+        top: 0;
+        width: 50px;
+        height: 80px;
+        background: yellow;
+        border-radius: 50px 50px 0 0;
+        -webkit-transform: rotate(45deg);
+        -webkit-transform-origin: 100% 100%;
+    }
+</style>
+<div class="heart"></div>
+
+
+<!--动画 transition-->
+<!-- about the querySelector -->
+<style type="text/css">
+    .transition_duration:hover{
+        /*width: 600px;*/
+        -webkit-transform: scale(2,1);
+        -webkit-transform-origin:0 0;
+        -webkit-transition-duration: 4s;
+    }
+
+</style>
+<div id="transition_duration" class=""></div>
+<script type="text/javascript">
+    window.onload=function(){
+        alert(document.querySelector("#transition_duration"));
+        document.querySelector("#transition_duration").onmouseover=function(){
+            this.className="transition_duration";
+        }
+    }
+</script>
+
+
+
+
+
+<!--跳动的获取焦点 animation-->
+<style type="text/css">
+    #twinkle{
+        -webkit-animation: name 3s infinite linear;
+    }
+    @-webkit-keyframes name {
+        0%{
+            border:10px solid RGBa(255,242,0,0.2);
+        }
+        50%{
+            border: 10px solid RGBa(255,242,0,1);
+        }
+        100%{
+            border:10px solid RGBa(255,242,0,0.2);
+        }
+     }
+
+</style>
+<div id="twinkle"></div>
+
+
+
+
+</body>
+</html>

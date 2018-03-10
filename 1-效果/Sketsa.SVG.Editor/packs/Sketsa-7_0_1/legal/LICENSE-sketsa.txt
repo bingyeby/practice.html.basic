@@ -1,0 +1,42 @@
+KIYUT Software License 
+(ver 3.0)
+
+PLEASE READ THIS LICENSE DOCUMENT (THE "LICENSE") CAREFULLY BEFORE DOWNLOADING OR USING THE SOFTWARE.  BY DOWNLOADING OR USING THE LICENSED SOFTWARE YOU AGREE TO BE BOUND BY ITS TERMS AND CONDITIONS.  IF YOU DO NOT ACCEPT THESE LICENSE TERMS, PROMPTLY ERASE OR OTHERWISE DESTROY THE UNUSED SOFTWARE AND ALL OTHER MATERIALS PROVIDED WITH IT. PLEASE NOTE THAT YOU MAY NOT USE, COPY, MODIFY OR TRANSFER THE SOFTWARE OR ANY COPY, EXCEPT AS EXPRESSLY PROVIDED IN THIS LICENSE AGREEMENT.
+
+
+1. COPYRIGHT
+The Software Product is protected by copyright laws and international copyright treaties, as well as other intellectual property laws and treaties. Any use of this software in violation of copyright law or the terms of this agreement will be prosecuted to the fullest extent permissible by law.
+
+
+2. GRANT OF LICENSE AND SCOPE OF USE
+All rights not specifcally granted to you herein are retained by KIYUT.
+
+2.1 Single User License
+Subject to the terms and conditions of this License, KIYUT grants to you, if you are an individual, or, if you are an entity, you must designate one individual within your organization a personal, non-exclusive, non-transferable, limited license, and royalty free right to use the Product for the purposes described in the Documentation. You may install the Product on a reasonable number of machines provided that the user is the only individual permitted to use the Product. 
+
+2.2 Multiple Users License
+You may purchase from KIYUT or its authorized reseller additional licenses to permit multiple users to use the Product.  Such rights are conditioned upon your payment of the applicable fees. You agree that you will not designate more users than the number of user Licenses that KIYUT or its authorized reseller has expressly granted to you and you will not allow the Product to be used by any individuals other than the users designated by you from time to time.
+
+2.3 Evaluation License
+Subject to the terms and conditions of this License, you may exercise your rights under this license to use the Product and to create Works for the sole purpose of evaluating or demonstrating the Product. You may not use the Product for any commercial, business, governmental or institutional purpose of any kind.
+
+2.4 Pre-release Product
+Subject to the terms and conditions of this License, if the Product you have received with this license is pre-commercial release or beta Software ("Pre-release Software"), you acknowledge that KIYUT has not promised or guaranteed to you that Pre-release Software will be announced or made available to anyone in the future, that KIYUT has no express or implied obligation to you to announce or introduce the Pre-release software and that KIYUT may not introduce a product similar to or compatible with the Pre-release Software. During the term of this Agreement, if requested by KIYUT, you will provide feedback to KIYUT regarding testing and use of the Pre-release software, including error or bug reports.
+
+2.5 Restriction
+Except as provided in this License, you may not transfer, rent, lease, lend, copy, modify, translate, sublicense, time-share or electronically transmit or receive any part of the product. You acknowledge that parts of the product is a confidential trade secret of KIYUT and therefore agrees not to modify the product or attempt to decipher, decompile, disassemble or reverse engineer the product, except to enable you legitimate use of the product.
+
+2.6 Third party materials
+Some third party materials included in the product may be subject to its own terms and conditions, which are typically found in then "license" information located near such materials or bundled with this product.
+
+
+3. TERMINATION
+This License Agreement is effective until terminated. You may terminate this License Agreement at any time by destroying the Software and all copies thereof. In addition, this License Agreement will automatically terminate if you fail to comply with its terms and conditions or upon written notice (which may be sent by e-mail). You agree that, upon such termination, you will either destroy (or permanently erase) all copies of the Software.
+
+
+4. LIMITED WARRANTY
+THE LICENSED SOFTWARE AND DOCUMENTATION ARE PROVIDED ON AN "AS IS" WITHOUT WARRANTIES, CONDITIONS, REPRESENTATIONS OR GUARANTIES OF ANY KIND, EITHER EXPRESSED, IMPLIED, STATUTORY OR OTHERWISE, INCLUDING, BUT NOT LIMITED TO, ANY IMPLIED WARRANTIES OR CONDITIONS OF MERCHANTABILITY, SATISFACTORY QUALITY, TITLE, NONINFRINGEMENT OR FITNESS FOR A PARTICULAR PURPOSE. KIYUT DOES NOT WARRANT THAT THE FUNCTIONS CONTAINED IN THE LICENSED SOFTWARE WILL MEET YOUR REQUIREMENTS, OR THAT THE OPERATION OF THE LICENSED SOFTWARE WILL BE UNINTERRUPTED, ERROR FREE, OR VIRUS-FREE, OR THAT THE LICENSED SOFTWARE WILL BE YEAR 2000 COMPLIANT, OR THAT DEFECTS IN THE LICENSED SOFTWARE WILL BE CORRECTED. THIS DISCLAIMER OF WARRANTY CONSTITUTES AN ESSENTIAL PART OF THIS LICENSE.
+
+
+5. LIMITATION OF LIABILITY
+TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT KIYUT, ITS DISTRIBUTORS AND SUPPLIERS, OR ANY OTHER PERSON WHO HAS BEEN INVOLVED IN THE CREATION, PRODUCTION, OR DELIVERY OF THE SOFTWARE BE LIABLE FOR ANY SPECIAL, INCIDENTAL, INDIRECT, OR CONSEQUENTIAL DAMAGES WHATSOEVER (INCLUDING, WITHOUT LIMITATION, DAMAGES FOR LOSS OF BUSINESS PROFITS, BUSINESS INTERRUPTION, LOSS OF BUSINESS INFORMATION, OR ANY OTHER PECUNIARY LOSS) ARISING OUT OF THE USE OF OR INABILITY TO USE THE SOFTWARE PRODUCT, EVEN IF KIYUT HAS BEEN INFORMED OF THE POSSIBILITY OF SUCH DAMAGES.

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><module codename="kiyut.sketsa.modules.branding">
+    <module_version install_time="1348164874736" last="true" origin="installer" specification_version="7.0">
+        <file crc="1268835661" name="config/Modules/kiyut-sketsa-modules-branding.xml"/>
+        <file crc="3573962858" name="modules/kiyut-sketsa-modules-branding.jar"/>
+    </module_version>
+</module>
