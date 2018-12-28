@@ -1,0 +1,151 @@
+<!doctype html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>test</title>
+    <style>
+        html {
+        }
+        body {
+            margin: 20px 0
+        }
+    </style>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+    <script src="https://cdn.bootcss.com/jqueryui/1.12.1/jquery-ui.js"></script>
+    <link href="https://cdn.bootcss.com/jqueryui/1.12.1/jquery-ui.css" rel="stylesheet">
+</head>
+<body>
+
+<style>
+    #sortable1, #sortable2, #sortable3 {
+        list-style-type: none;
+        float: left;
+        padding: 10px 30px 30px 10px;
+        border: 1px solid #258ad9;
+        margin: 0 10px;
+        min-width: 500px;
+        box-sizing: border-box;
+    }
+    #sortable1 li, #sortable2 li, #sortable3 li {
+        margin: 1px 10px 0 0;
+        padding: 2px;
+        font-size: 1em;
+        width: 100%;
+
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+
+        /*display: flex;*/
+        /*justify-content: space-between;*/
+        position: relative;
+
+    }
+    .ui-selecting {
+        background: rgba(205, 232, 255, 1);
+        border: rgb(187, 224, 255);
+    }
+    .ui-selected {
+        background: rgba(205, 232, 255, 1);
+    }
+    .ui-selected .portlet-header { /*神来之笔*/
+        width: 100%;
+    }
+    .portlet-header {
+        position: absolute;
+        top: 0;
+        left: 0%;
+        width: 50%;
+        height: 100%;
+        transform: translate(0%, 0%);
+
+        background: linear-gradient(to right, rgba(96, 197, 223, 0.56) 0%, rgba(96, 197, 223, 0.56) 30%, transparent 100%);
+        cursor: move;
+    }
+</style>
+<script>
+    $(function () {
+        let sortState = ''
+        // 排序
+        $("ul.dropOut").sortable({
+            connectWith: "ul",
+            handle: ".portlet-header",
+            start: function (event, ui) {
+                if ($(event.target).children('.ui-selected').length > 2) {// placeholder
+                    console.log(`拖动项多余两个`,);
+                    sortState = 'dropThen2'
+                }
+            },
+            receive: function (event, ui) {
+                /*
+                * 操作item在接受方的位置: $(event.target).find('li').index(ui.item)
+                * */
+                if (sortState === 'dropThen2') {
+                    console.log(`拖动项多余两个`, '将其余的移动到目标项',);
+                    ui.item.after(ui.sender.find('li.ui-selected'))
+
+                    // 清楚选中样式
+                    $(event.target).children().removeClass('ui-selected')
+                } else {
+                    $(event.target).children().removeClass('ui-selected')
+                }
+            }
+        });
+
+        // 选择
+        $("ul.dropOut").selectable({});
+    });
+</script>
+<ul id="sortable1" class="dropOut">
+    <li class="ui-state-default-config">
+        <div class="portlet-header"></div>
+        可被放置到..
+    </li>
+    <li class="ui-state-default-config">
+        <div class="portlet-header"></div>
+        ..一个空列表中
+    </li>
+    <li class="ui-state-default-config">
+        <div class="portlet-header"></div>
+        Item 3
+    </li>
+    <li class="ui-state-default-config">
+        <div class="portlet-header"></div>
+        Item 4
+    </li>
+    <li class="ui-state-default-config">
+        <div class="portlet-header"></div>
+        Item 5
+    </li>
+</ul>
+<ul id="sortable2" class="dropOut">
+    <li class="ui-state-default-config">
+        <div class="portlet-header"></div>
+        不可被放置到..
+    </li>
+    <li class="ui-state-default-config">
+        <div class="portlet-header"></div>
+        ..一个空列表中
+    </li>
+    <li class="ui-state-default-config">
+        <div class="portlet-header"></div>
+        Item 3
+    </li>
+    <li class="ui-state-default-config">
+        <div class="portlet-header"></div>
+        Item 4
+    </li>
+    <li class="ui-state-default-config">
+        <div class="portlet-header"></div>
+        Item 5
+    </li>
+</ul>
+<ul id="sortable3" class="dropOut">
+</ul>
+
+</body>
+</html>
+
+
+
